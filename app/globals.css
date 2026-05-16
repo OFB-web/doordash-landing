@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #FF3D2E;
+  --primary-deep: #E6341F;
+  --accent-cyan: #00D9F5;
+  --accent-mint: #00FFB3;
+  --accent-orange: #FF6B35;
+  --bg-deep: #0A0B0F;
+  --bg-dark: #111318;
+  --bg-card: #191C24;
+}
+
+* { box-sizing: border-box; padding: 0; margin: 0; }
+html { overflow-x: hidden; }
+
+body {
+  background: var(--bg-deep);
+  color: #F1F5F9;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Lenis */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
+
+/* Custom cursor */
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 61, 46, 0.5);
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  transition: border-color 0.2s, width 0.3s cubic-bezier(0.34,1.56,0.64,1), height 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cursor-ring.is-hovering { width: 64px; height: 64px; border-color: var(--accent-cyan); }
+.cursor-ring.is-clicking { width: 28px; height: 28px; background: rgba(255,61,46,0.1); }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #FF3D2E 0%, #FF6B35 50%, #FFB347 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+.gradient-text-cool {
+  background: linear-gradient(135deg, #00D9F5, #00FFB3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-white {
+  background: linear-gradient(135deg, #ffffff, #CBD5E1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Glass */
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.09);
+}
+.glass-heavy {
+  background: rgba(17,19,24,0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Route animation */
+@keyframes routeDash {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+.route-line {
+  stroke-dasharray: 8 6;
+  stroke-dashoffset: 1000;
+  animation: routeDash 4s linear infinite;
+}
+
+/* Flip card */
+.flip-card-wrap { perspective: 1200px; }
+.flip-card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+}
+.flip-card-wrap:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+}
+/* Force front invisible after flip — fixes backdrop-filter breaking backface-visibility */
+.flip-card-wrap:hover .flip-card-front {
+  visibility: hidden;
+  transition: visibility 0s 0.33s;
+}
+.flip-card-back { transform: rotateY(180deg); }
+
+/* Ticker */
+.ticker-container { overflow: hidden; }
+.ticker-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-track-reverse { display: flex; width: max-content; animation: tickerReverse 35s linear infinite; }
+.ticker-track-reverse:hover { animation-play-state: paused; }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes tickerReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* Hero content — CSS fade-in so it never depends on JS to become visible */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content {
+  animation: heroIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+a, button, [role="button"] { cursor: none; }
