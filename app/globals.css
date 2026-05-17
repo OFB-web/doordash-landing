@@ -24,44 +24,53 @@ body {
   cursor: none;
 }
 
-/* Lenis */
+/* ─── Lenis ────────────────────────────────── */
 html.lenis { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* Scrollbar */
+/* ─── Scrollbar ─────────────────────────────── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg-deep); }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
 
-/* Custom cursor */
+/* ─── Custom cursor ─────────────────────────── */
 .cursor-dot {
   pointer-events: none;
   position: fixed;
   top: 0; left: 0;
-  width: 8px; height: 8px;
+  width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--primary);
+  background: #FF3D2E;
   z-index: 9999;
   transform: translate(-50%, -50%);
   will-change: transform;
+  mix-blend-mode: difference;
 }
 .cursor-ring {
   pointer-events: none;
   position: fixed;
   top: 0; left: 0;
-  width: 40px; height: 40px;
+  width: 36px; height: 36px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 61, 46, 0.5);
+  border: 1px solid rgba(255, 61, 46, 0.6);
   z-index: 9998;
   transform: translate(-50%, -50%);
   will-change: transform;
-  transition: border-color 0.2s, width 0.3s cubic-bezier(0.34,1.56,0.64,1), height 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  transition: border-color 0.2s, width 0.4s cubic-bezier(0.34,1.56,0.64,1), height 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
 }
-.cursor-ring.is-hovering { width: 64px; height: 64px; border-color: var(--accent-cyan); }
-.cursor-ring.is-clicking { width: 28px; height: 28px; background: rgba(255,61,46,0.1); }
+.cursor-ring.is-hovering {
+  width: 56px; height: 56px;
+  border-color: var(--accent-cyan);
+  background: rgba(0,217,245,0.05);
+}
+.cursor-ring.is-clicking {
+  width: 24px; height: 24px;
+  background: rgba(255,61,46,0.15);
+}
+a, button, [role="button"] { cursor: none; }
 
-/* Gradient text */
+/* ─── Gradient text ─────────────────────────── */
 .gradient-text {
   background: linear-gradient(135deg, #FF3D2E 0%, #FF6B35 50%, #FFB347 100%);
   -webkit-background-clip: text;
@@ -76,44 +85,199 @@ html.lenis { height: auto; }
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.gradient-text-white {
-  background: linear-gradient(135deg, #ffffff, #CBD5E1);
+
+/* ─── SHIMMER TEXT (hero signature effect) ──── */
+.shimmer-text {
+  background: linear-gradient(
+    105deg,
+    #FF3D2E 0%,
+    #FF6B35 18%,
+    #FFCBA4 32%,
+    #FFFFFF 42%,
+    #FFDE9A 50%,
+    #FFCBA4 58%,
+    #FF6B35 72%,
+    #FF3D2E 88%,
+    #FF6B35 100%
+  );
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: shimmerSlide 2.8s linear infinite;
 }
 
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* Text reveal — parent must have overflow:hidden */
+.text-reveal {
+  display: block;
+  animation: slideUpReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.text-reveal-delay-1 { animation-delay: 0.15s; }
+.text-reveal-delay-2 { animation-delay: 0.3s; }
+.text-reveal-delay-3 { animation-delay: 0.45s; }
+
+/* Shimmer with delayed reveal */
+.shimmer-reveal {
+  display: block;
+  background: linear-gradient(
+    105deg,
+    #FF3D2E 0%,
+    #FF6B35 18%,
+    #FFCBA4 32%,
+    #FFFFFF 42%,
+    #FFDE9A 50%,
+    #FFCBA4 58%,
+    #FF6B35 72%,
+    #FF3D2E 88%,
+    #FF6B35 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation:
+    slideUpReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both,
+    shimmerSlide 2.8s linear 1.2s infinite;
 }
 
-/* Glass */
+@keyframes shimmerSlide {
+  from { background-position: 200% center; }
+  to   { background-position: -200% center; }
+}
+
+@keyframes slideUpReveal {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+
+/* ─── Glow effects ───────────────────────────── */
+.glow-red { filter: drop-shadow(0 0 12px rgba(255,61,46,0.7)); }
+.glow-cyan { filter: drop-shadow(0 0 12px rgba(0,217,245,0.7)); }
+.glow-mint { filter: drop-shadow(0 0 12px rgba(0,255,179,0.7)); }
+
+.shadow-glow { box-shadow: 0 0 30px rgba(255,61,46,0.35); }
+.shadow-glow-lg { box-shadow: 0 0 60px rgba(255,61,46,0.5), 0 0 100px rgba(255,61,46,0.2); }
+
+/* ─── Glass ──────────────────────────────────── */
 .glass {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.04);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 .glass-heavy {
   background: rgba(17,19,24,0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.glass-card {
+  background: rgba(255,255,255,0.035);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.09);
 }
 
-/* Route animation */
+/* ─── Gradient shift ─────────────────────────── */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ─── Route line animation ───────────────────── */
 @keyframes routeDash {
   from { stroke-dashoffset: 1000; }
-  to { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: 0; }
 }
 .route-line {
   stroke-dasharray: 8 6;
   stroke-dashoffset: 1000;
   animation: routeDash 4s linear infinite;
 }
+.route-line-fast {
+  stroke-dasharray: 6 8;
+  stroke-dashoffset: 1000;
+  animation: routeDash 2.5s linear infinite;
+}
 
-/* Flip card */
+/* ─── Delivery dot path animation ───────────── */
+@keyframes dotMove1 {
+  0%   { offset-distance: 0%; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes dotMove2 {
+  0%   { offset-distance: 0%; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+.delivery-dot-1 {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #00FFB3;
+  box-shadow: 0 0 12px #00FFB3, 0 0 24px rgba(0,255,179,0.4);
+  position: absolute;
+  offset-path: path('M 120 650 C 280 580, 420 480, 600 360 S 820 240, 1000 180');
+  animation: dotMove1 5s linear infinite;
+}
+.delivery-dot-2 {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #FF3D2E;
+  box-shadow: 0 0 10px #FF3D2E, 0 0 20px rgba(255,61,46,0.4);
+  position: absolute;
+  offset-path: path('M 300 750 C 480 680, 600 560, 720 420 S 900 280, 1100 220');
+  animation: dotMove2 6s linear 2s infinite;
+}
+.delivery-dot-3 {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #00D9F5;
+  box-shadow: 0 0 10px #00D9F5;
+  position: absolute;
+  offset-path: path('M 50 400 C 250 350, 450 300, 650 250 S 900 180, 1150 140');
+  animation: dotMove2 7s linear 1s infinite;
+}
+
+/* ─── Location ping ──────────────────────────── */
+@keyframes locationPing {
+  0%   { transform: scale(1); opacity: 0.8; }
+  70%  { transform: scale(2.5); opacity: 0; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.loc-ping { animation: locationPing 2s ease-out infinite; }
+.loc-ping-delay { animation: locationPing 2s ease-out 0.8s infinite; }
+.loc-ping-delay-2 { animation: locationPing 2s ease-out 1.4s infinite; }
+
+/* ─── Float animations ───────────────────────── */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes floatYSlow {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.animate-float         { animation: floatY 3.8s ease-in-out infinite; }
+.animate-float-delayed { animation: floatYSlow 5s ease-in-out 1.2s infinite; }
+
+/* ─── Ping slow ──────────────────────────────── */
+@keyframes pingSlow {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.animate-ping-slow { animation: pingSlow 2.4s ease-out infinite; }
+
+/* ─── Pulse glow ─────────────────────────────── */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,61,46,0.3), 0 0 40px rgba(255,61,46,0.1); }
+  50%       { box-shadow: 0 0 40px rgba(255,61,46,0.6), 0 0 80px rgba(255,61,46,0.25); }
+}
+.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+
+/* ─── Flip card ──────────────────────────────── */
 .flip-card-wrap { perspective: 1200px; }
 .flip-card-inner {
   transform-style: preserve-3d;
@@ -127,42 +291,87 @@ html.lenis { height: auto; }
   position: absolute;
   inset: 0;
 }
-/* Force front invisible after flip — fixes backdrop-filter breaking backface-visibility */
 .flip-card-wrap:hover .flip-card-front {
   visibility: hidden;
   transition: visibility 0s 0.33s;
 }
 .flip-card-back { transform: rotateY(180deg); }
 
-/* Ticker */
+/* ─── Ticker ─────────────────────────────────── */
 .ticker-container { overflow: hidden; }
-.ticker-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 30s linear infinite;
+}
 .ticker-track:hover { animation-play-state: paused; }
-.ticker-track-reverse { display: flex; width: max-content; animation: tickerReverse 35s linear infinite; }
+.ticker-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: tickerReverse 35s linear infinite;
+}
 .ticker-track-reverse:hover { animation-play-state: paused; }
 
 @keyframes ticker {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
 @keyframes tickerReverse {
   from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+  to   { transform: translateX(0); }
 }
 
-/* Hero content — CSS fade-in so it never depends on JS to become visible */
+/* ─── Hero CSS entrance ──────────────────────── */
 @keyframes heroIn {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-content {
-  animation: heroIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+.hero-badge   { animation: heroIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
+.hero-sub     { animation: heroIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.55s both; }
+.hero-cta     { animation: heroIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.7s both; }
+.hero-trust   { animation: heroIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.85s both; }
+.hero-phone   { animation: heroIn 1s cubic-bezier(0.22,1,0.36,1) 0.3s both; }
+
+/* ─── Noise grain overlay ────────────────────── */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
 }
 
-/* Shimmer */
-@keyframes shimmer {
+/* ─── Section reveal ─────────────────────────── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+}
+.section-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Premium border gradient ────────────────── */
+.border-gradient {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,61,46,0.4), rgba(0,217,245,0.2), rgba(255,61,46,0.1));
+  z-index: -1;
+}
+
+/* ─── Shimmer ────────────────────────────────── */
+@keyframes shimmerSweep {
   from { transform: translateX(-100%); }
-  to { transform: translateX(100%); }
+  to   { transform: translateX(100%); }
 }
-
-a, button, [role="button"] { cursor: none; }
