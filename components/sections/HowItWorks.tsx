@@ -25,7 +25,7 @@ const steps = [
         <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
       </svg>
     ),
-    color: '#00D9F5',
+    color: '#0EA5E9',
     stat: '< 90s',
     statLabel: 'match time',
   },
@@ -51,7 +51,7 @@ const steps = [
         <path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
       </svg>
     ),
-    color: '#00FFB3',
+    color: '#00D49A',
     stat: '99.2%',
     statLabel: 'success rate',
   },
@@ -59,11 +59,10 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 md:py-32 overflow-hidden" id="how-it-works"
-      style={{ background: '#111318' }}>
+    <section className="py-20 md:py-32 overflow-hidden" id="how-it-works" style={{ background: '#FFFFFF' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        {/* Left-aligned header */}
+        {/* Header */}
         <motion.div
           initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -73,16 +72,16 @@ export default function HowItWorks() {
             How it works
           </p>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.05]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05]" style={{ color: '#0F1117' }}>
               Simple as<br />1, 2, 3, 4.
             </h2>
-            <p className="text-slate-500 text-base leading-relaxed max-w-sm md:text-right">
+            <p className="text-base leading-relaxed max-w-sm md:text-right" style={{ color: '#6B7280' }}>
               From opening the app to confirmed delivery, the whole process takes minutes.
             </p>
           </div>
         </motion.div>
 
-        {/* Numbered steps — editorial list */}
+        {/* Numbered steps */}
         <div>
           {steps.map((step, i) => (
             <motion.div
@@ -92,13 +91,13 @@ export default function HowItWorks() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               className="group flex gap-6 md:gap-12 py-10 md:py-12 border-t"
-              style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+              style={{ borderColor: '#E5E8ED' }}
             >
               {/* Big step number */}
               <div className="flex-shrink-0 w-14 md:w-20 pt-1">
                 <span
-                  className="text-5xl md:text-7xl font-black tabular-nums leading-none select-none transition-colors duration-300 group-hover:opacity-100"
-                  style={{ color: 'rgba(255,255,255,0.07)' }}
+                  className="text-5xl md:text-7xl font-black tabular-nums leading-none select-none"
+                  style={{ color: 'rgba(0,0,0,0.07)' }}
                 >
                   {step.num}
                 </span>
@@ -107,26 +106,48 @@ export default function HowItWorks() {
               {/* Content */}
               <div className="flex-1 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
                 <div className="flex items-start gap-4 flex-1">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
-                    style={{ background: `${step.color}12`, border: `1px solid ${step.color}20`, color: step.color }}>
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ background: `${step.color}10`, border: `1px solid ${step.color}20`, color: step.color }}
+                  >
                     {step.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold text-white mb-2 leading-tight">{step.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed max-w-md">{step.desc}</p>
+                    <h3 className="text-lg md:text-xl font-bold mb-2 leading-tight" style={{ color: '#0F1117' }}>{step.title}</h3>
+                    <p className="text-sm leading-relaxed max-w-md" style={{ color: '#6B7280' }}>{step.desc}</p>
                   </div>
                 </div>
 
                 {/* Stat */}
                 <div className="sm:text-right flex-shrink-0 pl-14 sm:pl-0">
                   <p className="text-2xl md:text-3xl font-black" style={{ color: step.color }}>{step.stat}</p>
-                  <p className="text-xs text-slate-600 mt-0.5">{step.statLabel}</p>
+                  <p className="text-xs mt-0.5" style={{ color: '#9CA3AF' }}>{step.statLabel}</p>
                 </div>
               </div>
             </motion.div>
           ))}
-          <div className="border-t" style={{ borderColor: 'rgba(255,255,255,0.06)' }} />
+          <div className="border-t" style={{ borderColor: '#E5E8ED' }} />
         </div>
+
+        {/* Full-width image placeholder below steps */}
+        <motion.div
+          initial={{ y: 24, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16 img-placeholder"
+          style={{ height: 340 }}
+        >
+          <svg viewBox="0 0 48 48" fill="none" stroke="#C8CDD6" strokeWidth="1.5" className="w-10 h-10">
+            <rect x="4" y="10" width="40" height="30" rx="3" />
+            <circle cx="16" cy="22" r="4" />
+            <path d="M4 33l10-10 8 8 6-6 16 14" />
+          </svg>
+          <div className="text-center px-6 max-w-md">
+            <p className="font-semibold mb-2" style={{ color: '#6B7280', fontSize: 13 }}>Process Image</p>
+            <p style={{ color: '#9CA3AF', fontSize: 12, lineHeight: 1.6 }}>
+              Clean lifestyle shot of a person at their front door handing a sealed package to a DoorDash delivery rider. Both people are smiling. Warm natural daylight, residential Kenyan home entrance. Focus on the handover moment — shows trust, speed, and ease of use.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

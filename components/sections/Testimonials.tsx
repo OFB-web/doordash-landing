@@ -4,13 +4,13 @@ import { motion } from 'framer-motion'
 
 const testimonials = [
   { name: 'Wanjiku Kamau', role: 'Online store owner · Nairobi', initials: 'WK', color: '#FF3D2E', rating: 5, quote: "DoorDash completely changed how I run my business. I was losing customers to competitors with faster shipping. Now I send 40 orders a day and my reviews have never been better." },
-  { name: 'Brian Otieno', role: 'DoorDash Driver · Mombasa', initials: 'BO', color: '#00FFB3', rating: 5, quote: "I make KSh 25,000 a week and I choose my own hours. DoorDash has given me the freedom to be there for my family while actually building something real. Best move I ever made." },
-  { name: 'Amina Hassan', role: 'Corporate client · Mombasa', initials: 'AH', color: '#00D9F5', rating: 5, quote: "We switched all our B2B deliveries to DoorDash four months ago. Not one lost package, always on time, and the live tracking keeps our clients updated without us lifting a finger." },
+  { name: 'Brian Otieno', role: 'DoorDash Driver · Mombasa', initials: 'BO', color: '#00D49A', rating: 5, quote: "I make KSh 25,000 a week and I choose my own hours. DoorDash has given me the freedom to be there for my family while actually building something real. Best move I ever made." },
+  { name: 'Amina Hassan', role: 'Corporate client · Mombasa', initials: 'AH', color: '#0EA5E9', rating: 5, quote: "We switched all our B2B deliveries to DoorDash four months ago. Not one lost package, always on time, and the live tracking keeps our clients updated without us lifting a finger." },
   { name: 'Kipchoge Waweru', role: 'Food entrepreneur · Nakuru', initials: 'KW', color: '#FF6B35', rating: 5, quote: "Hot food reaching customers in under 12 minutes. My regulars are impressed every single time. DoorDash is the reason my catering side hustle is now a full business." },
-  { name: 'Grace Muthoni', role: 'Fashion designer · Kisumu', initials: 'GM', color: '#E6341F', rating: 5, quote: "Fragile fabrics, express orders, weekend deliveries. DoorDash handles all of it and I have never had a damaged item. The riders are careful and professional every single time." },
-  { name: 'David Njoroge', role: 'DoorDash Driver · Nairobi', initials: 'DN', color: '#00FFB3', rating: 5, quote: "The app is clean, the payouts are honest and I can see exactly what I earned on each trip. DoorDash actually respects the people doing the work on the ground." },
+  { name: 'Grace Muthoni', role: 'Fashion designer · Kisumu', initials: 'GM', color: '#FF3D2E', rating: 5, quote: "Fragile fabrics, express orders, weekend deliveries. DoorDash handles all of it and I have never had a damaged item. The riders are careful and professional every single time." },
+  { name: 'David Njoroge', role: 'DoorDash Driver · Nairobi', initials: 'DN', color: '#00D49A', rating: 5, quote: "The app is clean, the payouts are honest and I can see exactly what I earned on each trip. DoorDash actually respects the people doing the work on the ground." },
   { name: 'Zawadi Akinyi', role: 'Pharmacist · Eldoret', initials: 'ZA', color: '#FF3D2E', rating: 5, quote: "I use DoorDash to deliver medication to patients who cannot leave their homes. It is fast, reliable and the riders handle sensitive parcels with genuine care." },
-  { name: 'James Kariuki', role: 'Tech startup founder · Nairobi', initials: 'JK', color: '#00D9F5', rating: 5, quote: "Same-day delivery for hardware, client gifts and office supplies. The API saved our ops team hours every week and the reliability has been outstanding across the board." },
+  { name: 'James Kariuki', role: 'Tech startup founder · Nairobi', initials: 'JK', color: '#0EA5E9', rating: 5, quote: "Same-day delivery for hardware, client gifts and office supplies. The API saved our ops team hours every week and the reliability has been outstanding across the board." },
 ]
 
 function StarIcon() {
@@ -23,20 +23,24 @@ function StarIcon() {
 
 function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
   return (
-    <div className="w-[300px] sm:w-[340px] flex-shrink-0 rounded-2xl p-6 mx-2.5 transition-all duration-300"
-      style={{ background: '#16181F', border: '1px solid rgba(255,255,255,0.07)' }}>
+    <div
+      className="w-[300px] sm:w-[340px] flex-shrink-0 rounded-2xl p-6 mx-2.5 transition-all duration-300"
+      style={{ background: '#FFFFFF', border: '1px solid #E5E8ED', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
+    >
       <div className="flex gap-0.5 mb-4">
         {[...Array(t.rating)].map((_, j) => <StarIcon key={j} />)}
       </div>
-      <p className="text-slate-300 leading-relaxed mb-5 text-sm">&ldquo;{t.quote}&rdquo;</p>
+      <p className="leading-relaxed mb-5 text-sm" style={{ color: '#4B5563' }}>&ldquo;{t.quote}&rdquo;</p>
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0"
-          style={{ background: `${t.color}15`, border: `1px solid ${t.color}25`, color: t.color }}>
+        <div
+          className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0"
+          style={{ background: `${t.color}12`, border: `1px solid ${t.color}20`, color: t.color }}
+        >
           {t.initials}
         </div>
         <div>
-          <p className="font-semibold text-white text-sm">{t.name}</p>
-          <p className="text-xs text-slate-500 mt-0.5">{t.role}</p>
+          <p className="font-semibold text-sm" style={{ color: '#0F1117' }}>{t.name}</p>
+          <p className="text-xs mt-0.5" style={{ color: '#9CA3AF' }}>{t.role}</p>
         </div>
       </div>
     </div>
@@ -48,7 +52,7 @@ export default function Testimonials() {
   const row2 = testimonials.slice(4)
 
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden" style={{ background: '#111318' }}>
+    <section className="relative py-20 md:py-32 overflow-hidden" style={{ background: '#F5F6F8' }}>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-14">
         <motion.div
@@ -59,10 +63,10 @@ export default function Testimonials() {
           <div className="flex justify-center gap-0.5 mb-5">
             {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5" style={{ color: '#0F1117' }}>
             Real people.<br /><span className="gradient-text">Real results.</span>
           </h2>
-          <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+          <p className="text-base max-w-lg mx-auto leading-relaxed" style={{ color: '#6B7280' }}>
             From solopreneurs to enterprise clients, here is what DoorDash has done for people who trust us every day.
           </p>
         </motion.div>
