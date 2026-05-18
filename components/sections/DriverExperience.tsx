@@ -18,7 +18,7 @@ const perks = [
     color: '#00D9F5',
   },
   {
-    title: "You're fully protected",
+    title: 'You are fully protected',
     desc: 'Comprehensive insurance coverage on every single trip you complete.',
     icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>),
     color: '#00FFB3',
@@ -34,43 +34,39 @@ const perks = [
 export default function DriverExperience() {
   return (
     <section className="relative py-20 md:py-32 overflow-hidden" id="for-drivers"
-      style={{ background: 'linear-gradient(180deg, #0A0B0F 0%, #111318 60%, #0A0B0F 100%)' }}>
-
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[180px] font-black select-none pointer-events-none whitespace-nowrap"
-        style={{ color: 'rgba(255,255,255,0.02)' }}>
-        EARN MORE
-      </div>
+      style={{ background: '#111318' }}>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
-          {/* Left: image + overlay */}
+          {/* Left: photo */}
           <motion.div
-            initial={{ x: -60, opacity: 0 }}
+            initial={{ x: -40, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="relative h-[360px] sm:h-[440px] md:h-[520px] rounded-3xl overflow-hidden">
+            <div className="relative h-[360px] sm:h-[440px] md:h-[500px] rounded-3xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80"
-                alt="African delivery rider"
+                alt="Delivery rider in Kenya"
                 fill
                 className="object-cover"
               />
               <div className="absolute inset-0"
-                style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(10,11,15,0.9) 100%)' }} />
+                style={{ background: 'linear-gradient(180deg, transparent 40%, rgba(17,19,24,0.95) 100%)' }} />
 
-              {/* Overlay stats */}
+              {/* Stats overlay */}
               <div className="absolute bottom-6 left-6 right-6 grid grid-cols-3 gap-3">
                 {[
                   { label: 'Active riders', value: 3000, suffix: '+', color: '#FF3D2E' },
                   { label: 'Avg weekly earn', value: 28, prefix: 'KSh ', suffix: 'k', color: '#00FFB3' },
                   { label: 'Cities', value: 8, color: '#00D9F5' },
                 ].map((stat, i) => (
-                  <div key={i} className="glass rounded-2xl p-4 text-center border border-white/10">
-                    <p className="text-2xl font-black" style={{ color: stat.color }}>
+                  <div key={i} className="rounded-2xl p-4 text-center"
+                    style={{ background: 'rgba(10,11,15,0.75)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <p className="text-xl font-black" style={{ color: stat.color }}>
                       {stat.prefix}<AnimatedCounter end={stat.value} duration={2} />{stat.suffix}
                     </p>
                     <p className="text-[10px] text-slate-400 mt-0.5">{stat.label}</p>
@@ -78,54 +74,62 @@ export default function DriverExperience() {
                 ))}
               </div>
 
-              {/* Badge */}
-              <div className="absolute top-6 left-6 glass border border-accent-mint/25 rounded-2xl px-4 py-3 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-accent-mint animate-pulse" />
+              {/* Hiring badge */}
+              <div className="absolute top-6 left-6 flex items-center gap-2 rounded-xl px-4 py-2.5"
+                style={{ background: 'rgba(10,11,15,0.75)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <div className="w-2 h-2 rounded-full pulse-dot" style={{ background: '#00FFB3' }} />
                 <span className="text-xs font-semibold text-white">Hiring now in your city</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right */}
+          {/* Right: text */}
           <div>
-            <motion.div initial={{ y: 40, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-              <div className="inline-flex items-center gap-2 glass border border-accent-mint/25 rounded-full px-4 py-2 mb-6">
-                <span className="text-xs font-semibold text-accent-mint tracking-widest uppercase">For Drivers</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5 leading-[1.05]">
+            <motion.div
+              initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="section-badge mb-6 inline-flex">For Drivers</span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5 leading-[1.05] mt-4">
                 Drive on your<br /><span className="gradient-text">own terms.</span>
               </h2>
-              <p className="text-slate-300 text-lg leading-relaxed mb-10 max-w-lg">
+              <p className="text-slate-400 text-base leading-relaxed mb-10 max-w-lg">
                 Turn your bike or car into an income machine across Kenyan cities. Set your own hours, choose your zones and get paid fast.
               </p>
             </motion.div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {perks.map((perk, i) => (
                 <motion.div
                   key={i}
-                  initial={{ x: 40, opacity: 0 }}
+                  initial={{ x: 30, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="glass rounded-2xl p-5 border border-white/8 flex items-start gap-4 hover:border-white/15 transition-all duration-300 group"
+                  transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-xl p-4 flex items-start gap-4 transition-all duration-250"
+                  style={{ background: '#16181F', border: '1px solid rgba(255,255,255,0.07)' }}
                 >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
-                    style={{ background: `${perk.color}15`, border: `1px solid ${perk.color}30`, color: perk.color }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${perk.color}10`, border: `1px solid ${perk.color}20`, color: perk.color }}>
                     {perk.icon}
                   </div>
                   <div>
-                    <p className="font-semibold text-white mb-1">{perk.title}</p>
-                    <p className="text-sm text-slate-400">{perk.desc}</p>
+                    <p className="font-semibold text-white text-sm mb-0.5">{perk.title}</p>
+                    <p className="text-sm text-slate-500 leading-relaxed">{perk.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }} className="mt-10">
-              <a href="/get-started" className="inline-flex items-center gap-2.5 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-300 hover:shadow-glow"
-                style={{ background: 'linear-gradient(135deg, #00FFB3, #00D9F5)', color: '#0A0B0F' }}>
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-9"
+            >
+              <a href="/get-started"
+                className="inline-flex items-center gap-2.5 font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:opacity-90 text-sm"
+                style={{ background: '#00FFB3', color: '#0A0B0F' }}>
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 Start earning today
               </a>
             </motion.div>
