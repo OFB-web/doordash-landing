@@ -1,7 +1,24 @@
 import type { Metadata } from 'next'
+import { Plus_Jakarta_Sans, Syne } from 'next/font/google'
 import './globals.css'
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
 import CustomCursor from '@/components/ui/CustomCursor'
+
+/* Body / UI font — warm, humanist, very popular on modern landing pages */
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
+})
+
+/* Display / heading font — editorial, expressive, used by agency & startup sites */
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  weight: ['700', '800'],
+})
 
 export const metadata: Metadata = {
   title: 'DoorDash — Deliver Anything. Instantly.',
@@ -16,15 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" suppressHydrationWarning className={`${jakarta.variable} ${syne.variable}`}>
       <body>
         <SmoothScrollProvider>
           <CustomCursor />

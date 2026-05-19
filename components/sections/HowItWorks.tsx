@@ -141,7 +141,7 @@ export default function HowItWorks() {
             src="/delivery-handoff.png"
             alt="Customer receiving a delivery at the door"
             fill
-            className="object-cover object-center"
+            className="object-cover object-top"
           />
         </motion.div>
       </div>

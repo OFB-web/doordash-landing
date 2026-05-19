@@ -26,9 +26,13 @@ html { overflow-x: hidden; }
 body {
   background: #FFFFFF;
   color: #0F1117;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-body), 'Plus Jakarta Sans', system-ui, sans-serif;
   overflow-x: hidden;
   cursor: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
 }
 
 /* ─── Lenis ─────────────────────────────────── */
