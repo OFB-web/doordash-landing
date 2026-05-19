@@ -11,19 +11,41 @@ function StarIcon() {
   )
 }
 
+const stats = [
+  { value: '2.4M+', label: 'Deliveries completed' },
+  { value: '4 min',  label: 'Average delivery time' },
+  { value: '99.2%', label: 'On-time success rate' },
+  { value: '3,000+',label: 'Verified riders' },
+]
+
 export default function Hero() {
   return (
-    <section style={{ background: '#FFFFFF' }}>
+    <section className="relative overflow-hidden" style={{ background: '#FFFFFF' }}>
 
-      {/* ── Main row: left text + right image ── */}
-      {/*
-       * Flexbox row with min-height: 100svh.
-       * align-items: stretch (default) makes BOTH halves fill the row height.
-       * The right half therefore has a concrete height → next/image fill works.
-       */}
-      <div className="flex flex-col lg:flex-row" style={{ minHeight: '100svh' }}>
+      {/* ─── Mobile: full-bleed background image + dark gradient overlay ─── */}
+      {/* Hidden on lg+; the desktop split uses the right panel instead       */}
+      <div className="absolute inset-0 lg:hidden">
+        <Image
+          src="/hero-rider.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* gradient heavier on the left so text is readable */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(150deg, rgba(5,5,10,0.78) 0%, rgba(5,5,10,0.50) 60%, rgba(5,5,10,0.30) 100%)' }}
+        />
+      </div>
 
-        {/* Left: text, centered vertically */}
+      {/* ─── Main content row ─── */}
+      <div
+        className="relative z-10 flex flex-col lg:flex-row"
+        style={{ minHeight: '100svh' }}
+      >
+
+        {/* Left: text content */}
         <div
           className="flex flex-col justify-center px-6 sm:px-10 xl:px-20 pt-28 pb-16 lg:py-20"
           style={{ flex: '1 1 50%' }}
@@ -34,20 +56,23 @@ export default function Hero() {
 
           <h1 className="font-black tracking-tight leading-[0.97]" style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}>
             <span className="overflow-hidden block">
-              <span className="text-reveal text-reveal-delay-1 block" style={{ color: '#0F1117' }}>Deliver</span>
+              <span className="text-reveal text-reveal-delay-1 block text-white lg:text-[#0F1117]">Deliver</span>
             </span>
             <span className="overflow-hidden block">
               <span className="shimmer-reveal block">Anything.</span>
             </span>
             <span className="overflow-hidden block">
-              <span className="text-reveal text-reveal-delay-3 block" style={{ color: '#0F1117' }}>In Minutes.</span>
+              <span className="text-reveal text-reveal-delay-3 block text-white lg:text-[#0F1117]">In Minutes.</span>
             </span>
           </h1>
 
-          <p className="mt-8 text-lg max-w-[400px] leading-relaxed hero-sub" style={{ color: '#4B5563' }}>
+          <p
+            className="mt-8 text-lg max-w-[400px] leading-relaxed hero-sub text-white/80 lg:text-[#4B5563]"
+          >
             Kenya&apos;s fastest on-demand delivery. Send packages across 8 cities, tracked end to end, guaranteed on time.
           </p>
 
+          {/* CTAs */}
           <div className="mt-9 flex flex-wrap gap-3 hero-cta">
             <MagneticButton href="/get-started" strength={0.35}>
               <span
@@ -59,7 +84,10 @@ export default function Hero() {
               </span>
             </MagneticButton>
             <MagneticButton href="/get-started">
-              <span className="btn-secondary text-sm sm:text-base">
+              {/* border colour switches: white/40 on mobile dark bg → #E5E8ED on desktop */}
+              <span
+                className="inline-flex items-center gap-2.5 font-semibold px-8 py-4 rounded-xl text-sm sm:text-base transition-all duration-200 border-[1.5px] text-white border-white/40 hover:border-white/80 lg:text-[#374151] lg:border-[#E5E8ED] lg:hover:border-[#FF3D2E] lg:hover:text-[#FF3D2E]"
+              >
                 Become a driver
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                   <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
@@ -75,7 +103,7 @@ export default function Hero() {
                 <div
                   key={i}
                   className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-black"
-                  style={{ background: `${c}15`, color: c }}
+                  style={{ background: `${c}25`, color: '#fff' }}
                 >
                   {String.fromCharCode(65 + i)}
                 </div>
@@ -85,30 +113,29 @@ export default function Hero() {
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
               </div>
-              <span className="text-xs" style={{ color: '#9CA3AF' }}>
-                <span className="font-semibold" style={{ color: '#0F1117' }}>50,000+</span> Kenyans trust us
+              <span className="text-xs text-white/60 lg:text-[#9CA3AF]">
+                <span className="font-semibold text-white lg:text-[#0F1117]">50,000+</span> Kenyans trust us
               </span>
             </div>
           </div>
 
-          {/* Mobile-only stats */}
-          <div className="lg:hidden grid grid-cols-2 mt-12 pt-10" style={{ borderTop: '1px solid #E5E8ED' }}>
-            {[
-              { value: '2.4M+', label: 'Deliveries completed' },
-              { value: '4 min', label: 'Average delivery time' },
-              { value: '99.2%', label: 'On-time success rate' },
-              { value: '3,000+', label: 'Verified riders' },
-            ].map((s, i) => (
-              <div key={i} className="py-5 px-2 flex flex-col gap-1"
-                style={{ borderRight: i % 2 === 0 ? '1px solid #E5E8ED' : 'none' }}>
-                <span className="text-2xl font-black" style={{ color: '#0F1117' }}>{s.value}</span>
-                <span className="text-xs" style={{ color: '#9CA3AF' }}>{s.label}</span>
+          {/* Mobile-only inline stats (white text on dark overlay) */}
+          <div className="lg:hidden grid grid-cols-2 mt-12 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.18)' }}>
+            {stats.map((s, i) => (
+              <div
+                key={i}
+                className="py-4 px-2 flex flex-col gap-1"
+                style={{ borderRight: i % 2 === 0 ? '1px solid rgba(255,255,255,0.18)' : 'none' }}
+              >
+                <span className="text-2xl font-black text-white">{s.value}</span>
+                <span className="text-xs text-white/50">{s.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right: image panel — flex stretches it to match the row's min-height */}
+        {/* ─── Right: image panel — desktop only ─── */}
+        {/* Flex stretch gives this div the same height as the row (min 100svh) */}
         <div
           className="hidden lg:block relative overflow-hidden flex-shrink-0"
           style={{ width: '50%' }}
@@ -146,14 +173,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Desktop stats bar ── */}
-      <div className="hidden lg:grid grid-cols-4 border-t" style={{ borderColor: '#E5E8ED' }}>
-        {[
-          { value: '2.4M+', label: 'Deliveries completed' },
-          { value: '4 min', label: 'Average delivery time' },
-          { value: '99.2%', label: 'On-time success rate' },
-          { value: '3,000+', label: 'Verified riders' },
-        ].map((stat, i) => (
+      {/* ─── Desktop stats bar ─── */}
+      <div className="relative z-10 hidden lg:grid grid-cols-4 border-t" style={{ borderColor: '#E5E8ED', background: '#FFFFFF' }}>
+        {stats.map((stat, i) => (
           <div key={i} className="py-6 px-8 flex flex-col gap-1"
             style={{ borderRight: i < 3 ? '1px solid #E5E8ED' : 'none' }}>
             <span className="text-2xl sm:text-3xl font-black" style={{ color: '#0F1117' }}>{stat.value}</span>
