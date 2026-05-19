@@ -82,11 +82,13 @@ export default function LiveExperience() {
           viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16 sm:mb-20"
         >
-          <span className="section-badge mb-6 inline-flex">Live experience</span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5 mt-4">
+          <p className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: '#FF3D2E' }}>
+            Live experience
+          </p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5 text-white">
             Watch it <span className="gradient-text">happen</span>
           </h2>
-          <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+          <p className="text-base max-w-lg mx-auto leading-relaxed" style={{ color: '#94a3b8' }}>
             From the moment you tap send to the second it arrives, every step is tracked in real time.
           </p>
         </motion.div>
