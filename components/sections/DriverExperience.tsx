@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const perks = [
@@ -38,19 +39,12 @@ export default function DriverExperience() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="relative rounded-2xl overflow-hidden" style={{ height: 480 }}>
-              <div className="img-placeholder h-full rounded-2xl" style={{ borderRadius: 16, border: 'none', background: '#E8EBF0' }}>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#C8CDD6" strokeWidth="1.5" className="w-10 h-10">
-                  <rect x="4" y="10" width="40" height="30" rx="3" />
-                  <circle cx="16" cy="22" r="4" />
-                  <path d="M4 33l10-10 8 8 6-6 16 14" />
-                </svg>
-                <div className="text-center px-6 max-w-xs">
-                  <p className="font-semibold mb-2" style={{ color: '#6B7280', fontSize: 13 }}>Driver Photo</p>
-                  <p style={{ color: '#9CA3AF', fontSize: 12, lineHeight: 1.6 }}>
-                    Portrait/action photo of a young Kenyan delivery rider on a motorbike. Confident and smiling, wearing a DoorDash branded helmet and vest. Urban Nairobi background — buildings, greenery, bustling street. Three-quarter angle, warm natural lighting, vibrant colors. Vertical orientation.
-                  </p>
-                </div>
-              </div>
+              <Image
+                src="/driver-rider.png"
+                alt="DoorDash delivery rider on a motorbike"
+                fill
+                className="object-cover object-center"
+              />
 
               {/* Stats overlay card */}
               <div

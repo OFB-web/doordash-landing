@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import MagneticButton from '@/components/ui/MagneticButton'
 
 function StarIcon() {
@@ -103,23 +104,15 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: full-height image placeholder — desktop only */}
-        <div className="hidden lg:flex flex-col relative overflow-hidden" style={{ background: '#F0F2F5' }}>
-
-          {/* Image placeholder fills the entire right panel */}
-          <div className="img-placeholder flex-1 rounded-none" style={{ borderRadius: 0, border: 'none', minHeight: '100%' }}>
-            <svg viewBox="0 0 48 48" fill="none" stroke="#C8CDD6" strokeWidth="1.5" className="w-12 h-12">
-              <rect x="4" y="10" width="40" height="30" rx="3" />
-              <circle cx="16" cy="22" r="4" />
-              <path d="M4 33l10-10 8 8 6-6 16 14" />
-            </svg>
-            <div className="text-center px-8 max-w-xs">
-              <p className="font-semibold mb-2" style={{ color: '#6B7280', fontSize: 13 }}>Hero Image</p>
-              <p style={{ color: '#9CA3AF', fontSize: 12, lineHeight: 1.6 }}>
-                Lifestyle photo of a DoorDash delivery rider on a motorbike in a vibrant Nairobi street. Rider is smiling, wearing a helmet and branded vest. Busy urban background — matatus, storefronts, people. Bright natural daylight. Vertical/portrait crop filling a full-height column.
-              </p>
-            </div>
-          </div>
+        {/* Right: full-height image — desktop only */}
+        <div className="hidden lg:flex flex-col relative overflow-hidden">
+          <Image
+            src="/hero-rider.png"
+            alt="DoorDash delivery rider on a scooter"
+            fill
+            className="object-cover object-center"
+            priority
+          />
 
           {/* Floating status card */}
           <div

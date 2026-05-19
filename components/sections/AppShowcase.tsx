@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const features = [
@@ -55,18 +56,13 @@ export default function AppShowcase() {
             viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="md:sticky md:top-28"
           >
-            <div className="img-placeholder" style={{ height: 560 }}>
-              <svg viewBox="0 0 48 48" fill="none" stroke="#C8CDD6" strokeWidth="1.5" className="w-10 h-10">
-                <rect x="14" y="2" width="20" height="44" rx="4" />
-                <rect x="16" y="6" width="16" height="28" rx="2" />
-                <circle cx="24" cy="40" r="2" />
-              </svg>
-              <div className="text-center px-6 max-w-xs">
-                <p className="font-semibold mb-2" style={{ color: '#6B7280', fontSize: 13 }}>App Screenshot</p>
-                <p style={{ color: '#9CA3AF', fontSize: 12, lineHeight: 1.6 }}>
-                  High-resolution mockup of the DoorDash app on an iPhone. Screen shows the live tracking view — animated map with a rider moving along a route, ETA countdown, package status bar, and chat button. Clean, modern UI. Dark or light mode acceptable.
-                </p>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden" style={{ height: 560, background: '#F0F2F5' }}>
+              <Image
+                src="/app-mockup.png"
+                alt="DoorDash app tracking screen on mobile"
+                fill
+                className="object-contain"
+              />
             </div>
 
             {/* App store links */}

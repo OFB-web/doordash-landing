@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const steps = [
@@ -129,24 +130,19 @@ export default function HowItWorks() {
           <div className="border-t" style={{ borderColor: '#E5E8ED' }} />
         </div>
 
-        {/* Full-width image placeholder below steps */}
+        {/* Full-width image below steps */}
         <motion.div
           initial={{ y: 24, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 img-placeholder"
-          style={{ height: 340 }}
+          className="mt-16 relative rounded-2xl overflow-hidden"
+          style={{ height: 380 }}
         >
-          <svg viewBox="0 0 48 48" fill="none" stroke="#C8CDD6" strokeWidth="1.5" className="w-10 h-10">
-            <rect x="4" y="10" width="40" height="30" rx="3" />
-            <circle cx="16" cy="22" r="4" />
-            <path d="M4 33l10-10 8 8 6-6 16 14" />
-          </svg>
-          <div className="text-center px-6 max-w-md">
-            <p className="font-semibold mb-2" style={{ color: '#6B7280', fontSize: 13 }}>Process Image</p>
-            <p style={{ color: '#9CA3AF', fontSize: 12, lineHeight: 1.6 }}>
-              Clean lifestyle shot of a person at their front door handing a sealed package to a DoorDash delivery rider. Both people are smiling. Warm natural daylight, residential Kenyan home entrance. Focus on the handover moment — shows trust, speed, and ease of use.
-            </p>
-          </div>
+          <Image
+            src="/delivery-handoff.png"
+            alt="Customer receiving a delivery at the door"
+            fill
+            className="object-cover object-center"
+          />
         </motion.div>
       </div>
     </section>
