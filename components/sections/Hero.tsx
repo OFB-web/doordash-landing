@@ -1,165 +1,105 @@
 'use client'
 
 import Image from 'next/image'
-import MagneticButton from '@/components/ui/MagneticButton'
-
-function StarIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="#FBC02D" className="w-3.5 h-3.5">
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
-  )
-}
-
-const stats = [
-  { value: '2.4M+',  label: 'Deliveries completed' },
-  { value: '4 min',  label: 'Average delivery time' },
-  { value: '99.2%',  label: 'On-time rate' },
-  { value: '3,000+', label: 'Verified riders' },
-]
-
-const pills = [
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>,
-    text: 'Rider matched in under 90 seconds',
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>,
-    text: 'Live GPS tracking every 30 seconds',
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-    text: 'Every package insured to KSh 500,000',
-  },
-]
+import Link from 'next/link'
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden" style={{ minHeight: '100svh', display: 'flex', flexDirection: 'column' }}>
 
-      {/* ── Full-bleed background image ── */}
+      {/* Background photo */}
       <Image
         src="/hero-rider.png"
-        alt="DoorDash delivery rider"
+        alt="Zipp rider on a delivery"
         fill
         className="object-cover object-center"
         priority
       />
 
-      {/* ── Gradient overlay — heavier on left so text pops ── */}
+      {/* Overlay — heavier on the left so text is readable */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(105deg, rgba(5,5,12,0.88) 0%, rgba(5,5,12,0.70) 50%, rgba(5,5,12,0.35) 100%)',
+          background: 'linear-gradient(105deg, rgba(4,4,10,0.90) 0%, rgba(4,4,10,0.72) 52%, rgba(4,4,10,0.28) 100%)',
         }}
       />
 
-      {/* ── Main content ── */}
+      {/* Content */}
       <div className="relative z-10 flex-1 flex items-center">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 xl:px-20 w-full py-28 md:py-32">
-          <div className="max-w-2xl xl:max-w-3xl">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 xl:px-20 w-full py-32 md:py-40">
+          <div className="max-w-xl xl:max-w-2xl">
 
-            {/* Location badge */}
-            <p className="hero-badge text-xs font-semibold tracking-widest uppercase mb-8" style={{ color: '#FF3D2E' }}>
-              Now live in Nairobi · Mombasa · Kisumu · 5 more cities
+            {/* City line */}
+            <p className="fade-up-1 text-sm font-medium mb-7" style={{ color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em' }}>
+              Nairobi · Mombasa · Kisumu — and growing
             </p>
 
             {/* Headline */}
-            <h1 className="font-black tracking-tight leading-[0.95] text-white" style={{ fontSize: 'clamp(52px, 8vw, 100px)' }}>
-              <span className="overflow-hidden block">
-                <span className="text-reveal text-reveal-delay-1 block">Deliver</span>
-              </span>
-              <span className="overflow-hidden block">
-                <span className="shimmer-reveal block">Anything.</span>
-              </span>
-              <span className="overflow-hidden block">
-                <span className="text-reveal text-reveal-delay-3 block">In Minutes.</span>
-              </span>
+            <h1
+              className="fade-up-2 font-black text-white leading-[1.02] tracking-tight"
+              style={{ fontSize: 'clamp(48px, 7.5vw, 92px)' }}
+            >
+              Deliver anything,<br />
+              <span style={{ color: '#FF3D2E' }}>right now.</span>
             </h1>
 
-            {/* Strong intro — viewers get the full picture without scrolling */}
-            <p className="mt-7 text-lg sm:text-xl leading-relaxed hero-sub" style={{ color: 'rgba(255,255,255,0.75)', maxWidth: '560px' }}>
-              Kenya&apos;s #1 on-demand delivery platform. Book a pickup in 30 seconds, get matched to a verified rider instantly, and watch your package move live on the map — tracked end to end, guaranteed on time, every single order.
+            {/* Subheading — human, direct, no hype */}
+            <p
+              className="fade-up-3 mt-7 text-lg sm:text-xl leading-relaxed"
+              style={{ color: 'rgba(255,255,255,0.70)', maxWidth: '480px' }}
+            >
+              Book a pickup in seconds. A verified rider arrives at your door, and you watch every turn of the route until it&apos;s delivered — or your money back.
             </p>
 
-            {/* Feature pills */}
-            <div className="mt-6 flex flex-wrap gap-2.5 hero-cta">
-              {pills.map((pill, i) => (
-                <span
-                  key={i}
-                  className="inline-flex items-center gap-2 text-xs font-semibold px-3.5 py-2 rounded-full"
-                  style={{
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(255,255,255,0.16)',
-                    color: 'rgba(255,255,255,0.85)',
-                  }}
-                >
-                  <span style={{ color: '#FF3D2E' }}>{pill.icon}</span>
-                  {pill.text}
-                </span>
-              ))}
+            {/* CTAs */}
+            <div className="fade-up-4 mt-10 flex flex-wrap gap-4">
+              <Link
+                href="/get-started"
+                className="inline-flex items-center gap-2.5 font-bold text-white px-8 py-4 rounded-xl text-base transition-opacity hover:opacity-85"
+                style={{ background: '#FF3D2E' }}
+              >
+                Send a package
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+                </svg>
+              </Link>
+              <Link
+                href="/drivers"
+                className="inline-flex items-center gap-2.5 font-semibold text-white px-8 py-4 rounded-xl text-base transition-colors border"
+                style={{ borderColor: 'rgba(255,255,255,0.28)', background: 'transparent' }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.65)')}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.28)')}
+              >
+                Become a rider
+              </Link>
             </div>
 
-            {/* CTA buttons */}
-            <div className="mt-9 flex flex-wrap gap-3 hero-cta">
-              <MagneticButton href="/get-started" strength={0.35}>
-                <span
-                  className="inline-flex items-center gap-2.5 text-white font-bold px-8 py-4 rounded-xl text-sm sm:text-base transition-opacity duration-200 hover:opacity-90"
-                  style={{ background: '#FF3D2E' }}
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                  Send a Package
-                </span>
-              </MagneticButton>
-              <MagneticButton href="/get-started">
-                <span className="inline-flex items-center gap-2.5 font-semibold px-8 py-4 rounded-xl text-sm sm:text-base transition-all duration-200 border-[1.5px] text-white border-white/30 hover:border-white/70">
-                  Become a driver
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                    <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                  </svg>
-                </span>
-              </MagneticButton>
-            </div>
-
-            {/* Trust row */}
-            <div className="mt-10 flex items-center gap-4 hero-trust">
-              <div className="flex -space-x-2">
-                {['#FF3D2E', '#E6341F', '#0EA5E9', '#00D49A', '#FF6B35'].map((c, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center text-[10px] font-black text-white"
-                    style={{ background: `${c}40` }}
-                  >
-                    {String.fromCharCode(65 + i)}
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
-                </div>
-                <span className="text-xs" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                  <span className="font-semibold text-white">50,000+</span> Kenyans trust us
-                </span>
-              </div>
-            </div>
+            {/* Social proof — plain text, no gimmicks */}
+            <p className="fade-up-5 mt-10 text-sm" style={{ color: 'rgba(255,255,255,0.40)' }}>
+              Trusted by <span style={{ color: 'rgba(255,255,255,0.75)' }}>50,000+ people</span> across Kenya &nbsp;·&nbsp; 4.9 ★ on the App Store
+            </p>
           </div>
         </div>
       </div>
 
-      {/* ── Stats bar ── */}
+      {/* Stats bar */}
       <div
         className="relative z-10 grid grid-cols-2 md:grid-cols-4"
-        style={{ background: 'rgba(5,5,12,0.70)', backdropFilter: 'blur(16px)', borderTop: '1px solid rgba(255,255,255,0.08)' }}
+        style={{ background: 'rgba(4,4,10,0.75)', backdropFilter: 'blur(14px)', borderTop: '1px solid rgba(255,255,255,0.07)' }}
       >
-        {stats.map((stat, i) => (
+        {[
+          { value: '< 4 min', label: 'Average delivery' },
+          { value: '99.2%',   label: 'On-time rate' },
+          { value: '3,000+',  label: 'Verified riders' },
+          { value: '2.4M+',   label: 'Deliveries done' },
+        ].map((stat, i) => (
           <div
             key={i}
-            className="py-5 px-6 sm:px-8 flex flex-col gap-1"
-            style={{ borderRight: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}
+            className="py-5 px-6 sm:px-8"
+            style={{ borderRight: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}
           >
-            <span className="text-xl sm:text-2xl font-black text-white">{stat.value}</span>
-            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>{stat.label}</span>
+            <p className="text-xl sm:text-2xl font-black text-white">{stat.value}</p>
+            <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.40)' }}>{stat.label}</p>
           </div>
         ))}
       </div>

@@ -64,7 +64,7 @@ export default function Testimonials() {
             {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5" style={{ color: '#0F1117' }}>
-            Real people.<br /><span className="gradient-text">Real results.</span>
+            Real people.<br /><span style={{ color: '#FF3D2E' }}>Real results.</span>
           </h2>
           <p className="text-base max-w-lg mx-auto leading-relaxed" style={{ color: '#6B7280' }}>
             From solopreneurs to enterprise clients, here is what DoorDash has done for people who trust us every day.

@@ -86,7 +86,7 @@ export default function LiveExperience() {
             Live experience
           </p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5 text-white">
-            Watch it <span className="gradient-text">happen</span>
+            Watch it <span style={{ color: '#FF3D2E' }}>happen</span>
           </h2>
           <p className="text-base max-w-lg mx-auto leading-relaxed" style={{ color: '#94a3b8' }}>
             From the moment you tap send to the second it arrives, every step is tracked in real time.
