@@ -60,7 +60,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 md:py-32 overflow-hidden" id="how-it-works" style={{ background: '#FFFFFF' }}>
+    <section className="py-20 md:py-32 overflow-hidden" id="how-it-works" style={{ background: '#FFFFFF' }} >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
@@ -135,7 +135,7 @@ export default function HowItWorks() {
           initial={{ y: 24, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-16 relative rounded-2xl overflow-hidden"
-          style={{ height: 380 }}
+          style={{ height: 520 }}
         >
           <Image
             src="/delivery-handoff.png"

@@ -38,7 +38,7 @@ export default function DriverExperience() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative rounded-2xl overflow-hidden" style={{ height: 480 }}>
+            <div className="relative rounded-2xl overflow-hidden" style={{ height: 560 }}>
               <Image
                 src="/driver-rider.png"
                 alt="DoorDash delivery rider on a motorbike"
@@ -65,14 +65,6 @@ export default function DriverExperience() {
                 </div>
               </div>
 
-              {/* Hiring badge */}
-              <div
-                className="absolute top-5 left-5 flex items-center gap-2 rounded-xl px-3 py-2"
-                style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(12px)', border: '1px solid #E5E8ED', boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
-              >
-                <div className="w-1.5 h-1.5 rounded-full pulse-dot" style={{ background: '#00D49A' }} />
-                <span className="text-xs font-semibold" style={{ color: '#0F1117' }}>Hiring now in your city</span>
-              </div>
             </div>
           </motion.div>
 

@@ -31,7 +31,7 @@ const pillars = [
 
 export default function TrustSafety() {
   return (
-    <section className="py-20 md:py-32 overflow-hidden" id="safety" style={{ background: '#F5F6F8' }}>
+    <section className="py-20 md:py-32 overflow-hidden" id="safety" style={{ background: '#FFFFFF' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
